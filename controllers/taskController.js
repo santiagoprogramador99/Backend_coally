@@ -1,4 +1,4 @@
-const Task = require('../models/Task');
+const Task = require('../models/task');
 const { validationResult } = require('express-validator');
 
 // Crear una nueva tarea
