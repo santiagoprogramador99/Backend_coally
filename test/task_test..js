@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../app'); // Asegúrate de tener tu app configurada correctamente
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const Task = require('../models/task');
+const Task = require('../models/Task');
 
 // Configurar MongoDB en memoria
 let mongoServer;
