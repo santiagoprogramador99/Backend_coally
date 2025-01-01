@@ -19,8 +19,8 @@ const swaggerOptions = {
         servers: [
             {
                 url: process.env.NODE_ENV === 'production' 
-                    ? `https://tu-app-en-render.onrender.com`  // Cambia esta URL a la de tu aplicación en Render
-                    : `http://localhost:${process.env.PORT || 5000}`,  // Esto será para tu entorno local
+                    ? `https://backend-coally-1.onrender.com`  /
+                    : `http://localhost:${process.env.PORT || 5000}`,  // Esto será para mi entorno local
             },
         ],
         components: {
