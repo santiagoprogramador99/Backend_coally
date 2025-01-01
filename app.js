@@ -1,8 +1,8 @@
 require('dotenv').config(); 
 const express = require('express');
 const cors = require('cors');
-const taskRoutes = require('./routes/taskRoutes'); // Verifica que este archivo exista
-const errorHandler = require('./middlewares/errorHandler'); // Asegúrate de que el middleware esté implementado
+const taskRoutes = require('./routes/taskRoutes');
+const errorHandler = require('./middlewares/errorHandler');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const app = express();
@@ -18,7 +18,9 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${process.env.PORT || 5000}`, // Cambiar si el puerto cambia en producción
+                url: process.env.NODE_ENV === 'production' 
+                    ? `https://tu-app-en-render.onrender.com`  // Cambia esta URL a la de tu aplicación en Render
+                    : `http://localhost:${process.env.PORT || 5000}`,  // Esto será para tu entorno local
             },
         ],
         components: {
@@ -31,7 +33,7 @@ const swaggerOptions = {
             },
         },
     },
-    apis: ['./routes/*.js'], // Verifica que las rutas contengan los comentarios de Swagger
+    apis: ['./routes/*.js'],
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
