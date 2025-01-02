@@ -8,15 +8,30 @@ const options = {
       title: 'Task Manager API',
       version: '1.0.0',
       description: 'API for managing tasks',
-
     },
     servers: [
       {
-        url: 'http://localhost:5000',
+        url: process.env.NODE_ENV === 'production' 
+          ? 'https://backend-coally-1.onrender.com'  // URL de producción en Render
+          : 'http://localhost:5000',                  // URL local
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
       },
     ],
   },
-  apis: ['../routes/*.js'],
+  apis: ['../routes/*.js'], // Aquí se incluirán tus rutas de la API
 };
 
 const swaggerSpec = swaggerJsDoc(options);
